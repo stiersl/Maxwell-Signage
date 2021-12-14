@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  maxwell-signage-ui:
+    image: ${DOCKER_REGISTRY-}maxwell-signage-ui
+    build:
+      context: ./maxwell-signage-ui
+      dockerfile: Dockerfile
+      network: host
+    ports:
+      - "4205:443"
+    restart: always
