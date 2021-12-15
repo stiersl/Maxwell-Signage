@@ -9,4 +9,18 @@ services:
       network: host
     ports:
       - "4205:443"
+    environment:
+      - NODE_ENV=Development
+      - CERT=pugWEB
+      - KEY=pugWEBkey.pem
+      - TEST1=fart
+       command: >
+            /bin/sh -c
+            "envsubst '
+            $${CERT}
+            '< /etc/nginx/nginx.conf.template
+            > /etc/nginx/nginx.conf
+            && nginx -g 'daemon off;'"
     restart: always
+
+    
